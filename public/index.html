@@ -36,6 +36,11 @@
     } else {
         document.documentElement.classList.remove('dark')
     }
+    if (localStorage.getItem('language') === 'english' || (!('color-theme' in localStorage))) {
+        document.documentElement.classList.remove('bangla');
+      } else {
+        document.documentElement.classList.add('bangla')
+      }
 
     
 </script>

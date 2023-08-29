@@ -6,9 +6,11 @@ export default function Footer() {
       <footer class="bg-white hidden md:flex shadow dark:bg-slate-900">
           <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
               <div class="sm:flex sm:items-center sm:justify-between">
-                  <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
-                      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-                      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                  <a href="" class="flex items-center mb-4 sm:mb-0 " >
+                  <div className="icon flex-1 hidden md:flex w-20 h-20 ">
+                    <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' style={{ padding: "10px" }} />
+                    </div>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Buldr Bangladesh</span>
                   </a>
                   <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                       <li>
@@ -26,7 +28,7 @@ export default function Footer() {
                   </ul>
               </div>
               <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-              <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+              <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="" class="hover:underline">Buldr Bangladesh</a>. All Rights Reserved.</span>
           </div>
       </footer>
 

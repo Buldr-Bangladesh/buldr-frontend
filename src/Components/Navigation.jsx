@@ -21,7 +21,7 @@ export default function Navigation() {
     navigator(pathname)
   }
   return (
-        <div className="flex flex-row w-screen z-10 h-20 md:flex-col md:w-20 md:h-screen bg-gray-100 fixed bottom-0 md:top-0 dark:bg-slate-800" style={{alignItems:"center",justifyContent:"space-between"}}>
+        <div className="flex flex-row w-screen z-20 h-20 md:flex-col md:w-20 md:h-screen bg-gray-100 fixed bottom-0 md:top-0 dark:bg-slate-800" style={{alignItems:"center",justifyContent:"space-between"}}>
             <div className="home flex flex-row md:flex-col">
               <div className="icon hidden md:flex w-20 h-20">
                 <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' />
