@@ -1,24 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './Pages/Home';
+import { useEffect } from 'react';
+import { BrowserRouter ,Routes,Route} from 'react-router-dom';
+import Social from './Pages/Social';
+import Marketplace from './Pages/Marketplace';
+import Create from './Pages/Create';
+import Profile from './Pages/Profile';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/marketplace" element={<Marketplace/>}/>
+        <Route path="/social" element={<Social/>}/>
+        <Route path="/create" element={<Create/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
