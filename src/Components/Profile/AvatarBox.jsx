@@ -11,7 +11,7 @@ export default function AvatarBox() {
             <a href="#">
                 <h5 class="text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Salman Sayeed</h5>
             </a>
-            <div class="flex items-center mt-2.5 mb-5 text-center">
+            <div class="flex items-center text-gray-900 mt-2.5 mb-5 text-center dark:text-gray-500">
                A passionate coder with skills in both software development and embedded systems
             </div>
             <div class=" text-md text-center font-semibold text-gray-900 dark:text-white">

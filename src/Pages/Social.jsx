@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navigation from '../Components/Navigation'
+import Post from '../Components/Social/Post'
+import NavigationWide from '../Components/NavigationWide'
+import SocialFilter from '../Components/Social/SocialFilter'
 
 export default function Social() {
+  const [width, setWidth] = useState(600)
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  }, [])
   return (
-    <div>
-        <Navigation/>
-        <div className="min-h-screen bg-base flex flex-col md:flex-row font-primary dark:bg-slate-900" style={{alignItems:"center",justifyContent:"center"}}>
-            Social
-        </div>
+    <div className='pb-20 dark:bg-slate-900'>
+      {width > 600 && <NavigationWide />}
+      {width > 600 && <SocialFilter />}
+      {width <= 600 && <Navigation />}
+
+      <div className="min-h-screen bg-base flex flex-wrap flex-col md:flex-row font-primary dark:bg-slate-900" style={{ alignItems: "center", justifyContent: "center" }}>
+        <article class="p-6 my-5 bg-white max-w-xl mx-5 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          
+         
+
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 dark:text-gray-500"><a href="#">Want to show the world what you're working on?</a></h2>
+          <p class="mb-5 font-light text-gray-500 dark:text-gray-400">You can create a project post and show it to the world</p>
+          <div class="flex w-full justify-between items-center">
+          <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create</button>
+            
+          </div>
+        </article>
+        <div className='w-full flex items-center justify-center my-5'><Post /></div>
+        <div className='w-full flex items-center justify-center my-5'><Post /></div>
+        <div className='w-full flex items-center justify-center my-5'><Post /></div>
+
+
+
+      </div>
+
     </div>
   )
 }
