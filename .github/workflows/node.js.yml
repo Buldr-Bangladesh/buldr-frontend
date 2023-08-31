@@ -1,0 +1,82 @@
+name: Buldr Frontend Actions
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  checkout:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+#     - name: configure
+#       run: ./configure
+#     - name: make
+#       run: make
+#     - name: make check
+#       run: make check
+#     - name: make distcheck
+#       run: make distcheck
+  slack-notification:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          # Slack channel id, channel name, or user id to post message.
+          # See also: https://api.slack.com/methods/chat.postMessage#channels
+          # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+          channel-id: 'C05FCPU1C69,C05EJA8LMPA' #Last part in the URL starting with "C"
+          # For posting a simple plain text message
+          #slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+              "blocks": [
+                { 
+                  "type": "divider" 
+                },
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": ":heavy_exclamation_mark::clipboard: A new push/pull-request by ${{ github.actor }}",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "at repository ${{ github.repository }} "
+                  },
+                  "accessory": {
+                    "type": "image",
+                    "image_url": "https://img.freepik.com/free-vector/enter-key-press-flat-isometric_126523-1792.jpg?w=826&t=st=1688472226~exp=1688472826~hmac=3df25ee188b1e476af2a15d2663c7d952e436972246779009455ae4f0845e3bc",
+                    "alt_text": "github push"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View actions"
+                      },
+                      "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ],
+              "channel-id": "C05FCPU1C69"
+            }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      
