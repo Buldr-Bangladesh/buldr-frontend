@@ -3,6 +3,7 @@ import Navigation from '../Components/Navigation'
 import NavigationWide from '../Components/NavigationWide'
 import { Carousel } from 'flowbite-react'
 import MarketCard from '../Components/Marketplace/MarketCard'
+import CategoryCard from '../Components/Marketplace/CategoryCard'
 export default function Marketplace() {
   const [width, setWidth] = useState(600)
   useEffect(() => {
@@ -53,19 +54,19 @@ export default function Marketplace() {
           <h2 className='mt-4 text-md font-medium text-left leading-none tracking-tight text-gray-600 dark:text-gray-600'>Get the category of items that you want. All from our engineers</h2>
         </div>
         <div className="noscrollbar w-2/3 overflow-x-scroll flex flex-row flex-wrap" >
-          <MarketCard/>
-          <MarketCard/>
-          <MarketCard/>
-          <MarketCard/>
-          <MarketCard/>
-          <MarketCard/>
-          <MarketCard/>
+          <CategoryCard id="iot" name="IoT Devices"/>
+          <CategoryCard id="3d" name="3D Models"/>
+          <CategoryCard id="soft" name="Software Products"/>
+          <CategoryCard id="arduino" name="Arduino Devices"/>
+          <CategoryCard id="drone" name="Drones"/>
+       
+
         </div>
         <div className="w-full md:w-2/3 my-10" >
           <h2 className='mt-4 text-xl text-left font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white'>Shop by <span className="text-primary-600 dark:text-primary-500">Popularity</span> </h2>
           <h2 className='mt-4 text-md font-medium text-left leading-none tracking-tight text-gray-600 dark:text-gray-600'>Get the category of items that you want. All from our engineers</h2>
         </div>
-        <div className="noscrollbar w-2/3 overflow-x-scroll flex flex-row" >
+        <div className="noscrollbar w-2/3 overflow-x-scroll flex flex-row flex-wrap"  >
           <MarketCard/>
           <MarketCard/>
           <MarketCard/>

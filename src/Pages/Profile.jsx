@@ -6,6 +6,7 @@ import SocialsBox from '../Components/Profile/SocialsBox'
 import ProjectsBox from '../Components/Profile/ProjectsBox'
 import Navbar from '../Components/Navbar'
 export default function Profile() {
+    
   return (
     <div className='md:pt-20 pb-20 md:pb-0'>
         <Navigation/>

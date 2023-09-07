@@ -101,14 +101,20 @@ export default function NavigationWide() {
             </li>
           </ul>
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            {installedPlugins.map(a => 
+            {/* {installedPlugins.map(a => 
               (<li>
               <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                 <BsPlugin size={24} color={theme === "dark" ? "white" : "grey"}/>
                 <span class="ml-3">{pluginItems[a].name}</span>
               </a>
             </li>)
-            )}
+            )} */}
+            <li onClick={()=>navigator("/plugins")}>
+              <a class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                <BsPlugin size={24} color={theme === "dark" ? "white" : "grey"}/>
+                <span class="ml-3">Plugins</span>
+              </a>
+            </li>
           </ul>
           <figure class="absolute bottom-32 px-4 max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" onClick={() => switchPath("/plugins")}>
             <a href="#">

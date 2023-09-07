@@ -4,7 +4,7 @@ import {TbSocial} from 'react-icons/tb'
 import {MdCreate} from 'react-icons/md'
 import {CgProfile} from 'react-icons/cg'
 import {BiLogOut} from 'react-icons/bi'
-import {BsShop} from 'react-icons/bs'
+import {BsFillPlugFill, BsPlug, BsPlugin, BsShop} from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'flowbite-react'
 export default function Navigation() {
@@ -91,13 +91,24 @@ export default function Navigation() {
            
             <div className="">
             <Tooltip
+                content="Plugins"
+                placement="right"
+              >
+              <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-error" style={{alignItems:"center",justifyContent:"center"}} data-tip="Plugins" onClick={()=>switchPath("/plugins")}>
+                <div className="divider hidden md:flex"></div>
+                <div className=""><BsPlugin size={24} color={theme==="dark"?"white":"grey"}/></div>
+                <div className='text-xs md:hidden dark:text-white'>Plugins</div>
+                <div className="divider hidden md:flex"></div>
+              </button>
+              </Tooltip>
+              <Tooltip
                 content="Logout"
                 placement="right"
               >
               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-error" style={{alignItems:"center",justifyContent:"center"}} data-tip="Log Out">
                 <div className="divider hidden md:flex"></div>
                 <div className=""><BiLogOut size={24} color={theme==="dark"?"white":"grey"}/></div>
-                <div className='text-xs md:hidden dark:text-white'>Logout</div>
+                <div className='text-xs md:hidden dark:text-white'>Plugins</div>
                 <div className="divider hidden md:flex"></div>
               </button>
               </Tooltip>
