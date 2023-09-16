@@ -1,5 +1,17 @@
 export const pluginsData=[
     {
+        id:"paraphraser",
+        name:"Text Paraphraser Plugin",
+        title:"A plugin that re-writes whatever you give to it using a GPT model", 
+        image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
+    },
+    {
+        id:"image",
+        name:"Image Generator Plugin",
+        title:"A plugin that creates images based on your prompt with stable diffusion", 
+        image:"https://i.postimg.cc/hG5QHH2W/730-A00-B2-9859-4-D60-8-EEC-F43-E63-D5-D0-E4-1-201-a.jpg",
+    },
+    {
         id:"notes",
         name:"Notes Plugin",
         title:"A plugin that lets you write and organize your notes in markdown and preview them in pdf", 
@@ -37,6 +49,20 @@ export const pluginsData=[
     }
 ]
 export const pluginItems={
+    "paraphraser" : {
+        id:"paraphraser",
+        name:"Text Paraphraser Plugin",
+        title:"A plugin that re-writes whatever you give to it using a GPT model", 
+        image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
+        path:"/paraphraser"
+    },
+    "image" : {
+        id:"image",
+        name:"Image Generator Plugin",
+        title:"A plugin that creates images based on your prompt with stable diffusion", 
+        image:"https://i.postimg.cc/hG5QHH2W/730-A00-B2-9859-4-D60-8-EEC-F43-E63-D5-D0-E4-1-201-a.jpg",
+        path:"/image-generator"
+    },
     "notes":{
         id:"notes",
         name:"Notes Plugin",

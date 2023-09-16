@@ -16,6 +16,9 @@ import VideoCallJoin from './Plugins/Pages/VideocallJoin';
 import VideoCallRoom from './Plugins/Pages/VideoCallRoom';
 import ReadingRoomContextProvider from './Hooks/ReadingRoomContextProvider';
 import NotesCreate from './Plugins/Pages/NotesCreate';
+import PdfViewer from './Plugins/Components/Notes/PdfViewer';
+import ImageGenerator from './Plugins/Pages/ImageGenerator';
+import Paraphraser from './Plugins/Pages/Paraphraser';
 
 function App() {
 
@@ -31,7 +34,10 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/notes" element={<Notes />} />
+            <Route path="/notes-view" element={<PdfViewer />} />
             <Route path="/notes-create" element={<NotesCreate />} />
+            <Route path="/image-generator" element={<ImageGenerator />} />
+            <Route path="/paraphraser" element={<Paraphraser />} />
             <Route path="/videocall" element={<VideoCall />} />
             <Route path="/videocall/create" element={<VideoCallCreate />} />
             <Route path="/videocall/join" element={<VideoCallJoin />} />
