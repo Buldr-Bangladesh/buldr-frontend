@@ -85,7 +85,7 @@ export default function Paraphraser() {
                     </div>}
                     {generated && <div>
                         {data.map(a=>(
-                            <div className='p-4 max-w-5xl rounded-lg bg-gray-200 dark:bg-slate-800 mb-2'><p className='dark:text-white'>{a}</p></div>
+                            <div className='p-4  rounded-lg bg-gray-200 dark:bg-slate-800 mb-2'><p className='dark:text-white'>{a}</p></div>
                         ))}
                     </div>}
 
