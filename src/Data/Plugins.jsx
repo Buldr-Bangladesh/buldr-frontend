@@ -6,7 +6,7 @@ export const pluginsData=[
         image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
     },
     {
-        id:"image",
+        id:"imagegenerator",
         name:"Image Generator Plugin",
         title:"A plugin that creates images based on your prompt with stable diffusion", 
         image:"https://i.postimg.cc/hG5QHH2W/730-A00-B2-9859-4-D60-8-EEC-F43-E63-D5-D0-E4-1-201-a.jpg",
@@ -56,19 +56,19 @@ export const pluginItems={
         image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
         path:"/paraphraser"
     },
-    "image" : {
-        id:"image",
+    "imagegenerator" : {
+        id:"imagegenerator",
         name:"Image Generator Plugin",
         title:"A plugin that creates images based on your prompt with stable diffusion", 
         image:"https://i.postimg.cc/hG5QHH2W/730-A00-B2-9859-4-D60-8-EEC-F43-E63-D5-D0-E4-1-201-a.jpg",
-        path:"/image-generator"
+        path:"/imagegenerator"
     },
     "notes":{
         id:"notes",
         name:"Notes Plugin",
         title:"A plugin that lets you write and organize your notes in markdown and preview them in pdf", 
         image:"https://i.postimg.cc/ZnqJpJ5B/8848689.jpg",
-        path:"/notesplugin"
+        path:"/notes"
 
     },
     "videocall":{

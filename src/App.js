@@ -19,6 +19,7 @@ import NotesCreate from './Plugins/Pages/NotesCreate';
 import PdfViewer from './Plugins/Components/Notes/PdfViewer';
 import ImageGenerator from './Plugins/Pages/ImageGenerator';
 import Paraphraser from './Plugins/Pages/Paraphraser';
+import Dashboard from './Pages/Dashboard';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/plugins" element={<Plugins />} />
             <Route path="/social" element={<Social />} />
             <Route path="/create" element={<Create />} />
@@ -36,7 +38,8 @@ function App() {
             <Route path="/notes" element={<Notes />} />
             <Route path="/notes-view" element={<PdfViewer />} />
             <Route path="/notes-create" element={<NotesCreate />} />
-            <Route path="/image-generator" element={<ImageGenerator />} />
+            <Route path="/notes-pdf" element={<NotesCreate />} />
+            <Route path="/imagegenerator" element={<ImageGenerator />} />
             <Route path="/paraphraser" element={<Paraphraser />} />
             <Route path="/videocall" element={<VideoCall />} />
             <Route path="/videocall/create" element={<VideoCallCreate />} />

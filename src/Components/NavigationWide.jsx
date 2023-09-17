@@ -7,6 +7,7 @@ import { CgProfile } from 'react-icons/cg'
 import { BiLogOut } from 'react-icons/bi'
 import { BsShop } from 'react-icons/bs'
 import {BsPlugin} from 'react-icons/bs'
+import {RiDashboardFill} from 'react-icons/ri'
 import { usePlugin } from '../Hooks/PluginContextProvider'
 import { pluginItems } from '../Data/Plugins'
 export default function NavigationWide() {
@@ -60,19 +61,17 @@ export default function NavigationWide() {
 
       <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
 
-        <div class="overflow-y-auto py-5 px-3 h-full  bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-          <div className='flex items-center mb-5 justify-start w-full'>
-            <div className="icon hidden md:flex w-20 h-20">
-              <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' />
-            </div>
+        <div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700" >
+          <div className='flex items-center mb-5 justify-start w-full' onClick={() => switchPath("/")}>
+            <img className='w-16 h-16' src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' />
             <h2 className='text-xl font-bold text-black font-title dark:text-gray-100'>BULDR.</h2>
           </div>
           <div className="divider"></div>
           <ul class="space-y-2">
             <li>
-              <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" onClick={() => switchPath("/")}>
-                <AiOutlineHome size={24} color={theme === "dark" ? "white" : "grey"} />
-                <span class="ml-3">Home</span>
+              <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" onClick={() => switchPath("/dashboard")}>
+                <RiDashboardFill size={24} color={theme === "dark" ? "white" : "grey"} />
+                <span class="ml-3">Dashboard</span>
               </a>
             </li>
             <li>

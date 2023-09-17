@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import Navigation from '../Components/Navigation'
 import {AiTwotoneEdit} from 'react-icons/ai'
 import {BsTextParagraph,BsFillImageFill,BsFillCameraVideoFill,BsCodeSquare} from 'react-icons/bs'
@@ -9,6 +9,7 @@ import { ModalFooter } from 'flowbite-react/lib/esm/components/Modal/ModalFooter
 
 export default function Create() {
   const [type,setType]=useState("text")
+  const [width,setWidth]=useState()
   const [titleDone,setTitleDone]=useState(false)
   const [subDone,setSubDone]=useState(false)
   const [backdropDone,setBackdropDone]=useState(false)
@@ -36,17 +37,25 @@ export default function Create() {
     const obj={title,content,type}
     setCurrentBlocks([...currentBlocks])
   }
+  useEffect(()=>{
+    setWidth(window.innerWidth)
+  },[])
   return (
     <div>
+    <div className='w-screen dark:bg-slate-900'>
         <Navigation/>
-        <div className="min-h-screen pl-24 pt-5 bg-base flex flex-col md:flex-col font-primary dark:bg-slate-900">
+        {width <= 600 &&  <div className='flex z-10 md:hidden justify-center w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center"}}>
+          <img width="50px" height="50px" src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' onClick={() => navigator("/")}/>
+          <h2 className='text-xl font-bold text-black font-title dark:text-gray-100'><span className='text-primary-500'>BULDR.</span> Create</h2>
+        </div>}
+        <div className="min-h-screen pl-4 mt-20 md:mx-24 md:mt-0 md:pl-24 pt-5 bg-base flex flex-col md:flex-col font-primary dark:bg-slate-900">
             <h2 className='mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white'>Create Project </h2>
             {/** Title */}
-            <div class="mb-6 pr-20">
+            <div class="md:mb-6 md:pr-20 pr-4">
               {!titleDone && <form>   
                   <div class="relative">
-                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Project Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
-                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>setTitleDone(true)}>Set</button>
+                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder='Project Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
+                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={()=>setTitleDone(true)}>Set</button>
                   </div>
               </form>}
                 {
@@ -58,11 +67,11 @@ export default function Create() {
                 }
             </div>
              {/** Subtitle */}
-             <div class="mb-6 pr-20">
+             <div class="md:mb-6 md:pr-20 pr-4">
               {!subDone && <form>   
                   <div class="relative">
-                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Project Subtitle' value={subtitle} onChange={(e)=>setSubtitle(e.target.value)}/>
-                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>setSubDone(true)}>Set</button>
+                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder='Project Subtitle' value={subtitle} onChange={(e)=>setSubtitle(e.target.value)}/>
+                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={()=>setSubDone(true)}>Set</button>
                   </div>
               </form>}
                 {
@@ -74,11 +83,11 @@ export default function Create() {
                 }
             </div>
             {/** Backdrop */}
-            <div class="mb-6 pr-20">
+            <div class="md:mb-6 md:pr-20 pr-4">
               {!backdropDone && <form>   
                   <div class="relative">
-                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Project backdrop' value={backdrop} onChange={(e)=>setBackdrop(e.target.value)}/>
-                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>setSubDone(true)}>Set</button>
+                      <input type="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder='Project backdrop' value={backdrop} onChange={(e)=>setBackdrop(e.target.value)}/>
+                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={()=>setSubDone(true)}>Set</button>
                   </div>
               </form>}
                 {
@@ -103,29 +112,29 @@ export default function Create() {
             {/** Buttons & Button Groups */}
             <div className="w-full flex items-center">
               <div class="inline-flex rounded-md shadow-sm" role="group">
-                <button onClick={()=>setOpenTextModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                <button onClick={()=>setOpenTextModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
                   <BsTextParagraph size={16}/> Text<span className='hidden md:flex'> Block</span>
                 </button>
-                <button onClick={()=>setOpenImageModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                <button onClick={()=>setOpenImageModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
                   <BsFillImageFill size={16}/> Image<span className='hidden md:flex'> Block</span>
                 </button>
-                <button onClick={()=>setOpenVideoModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                <button onClick={()=>setOpenVideoModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200  hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
                   <BsFillCameraVideoFill size={16}/> Video<span className='hidden md:flex'> Block</span>
                 </button>
                 
-                <button onClick={()=>setOpenCodeModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                <button onClick={()=>setOpenCodeModal(true)} type="button" class="inline-flex gap-1 items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
                   <BsCodeSquare size={16}/> Code<span className='hidden md:flex'> Block</span>
                 </button>
               </div>
               
             </div>
             <div className="flex flex-col mb-4 mt-4">
-              <div className="flex ">
-                <ToggleSwitch className='mx-4 my-4' label="Add to marketplace"  checked={addPostToMarketplace} onChange={()=>setAddPostToMarketplace(!addPostToMarketplace)}/>
-                <ToggleSwitch className='mx-4 my-4' label="Add to social"  checked={addPostToSocial} onChange={()=>setAddPostToSocial(!addPostToSocial)}/>
+              <div className="flex flex-col md:flex-row">
+                <ToggleSwitch className='md:mx-4 md:my-4 my-2' label="Add to marketplace"  checked={addPostToMarketplace} onChange={()=>setAddPostToMarketplace(!addPostToMarketplace)}/>
+                <ToggleSwitch className='md:mx-4 md:my-4 my-2' label="Add to social"  checked={addPostToSocial} onChange={()=>setAddPostToSocial(!addPostToSocial)}/>
               </div>
                 <div className="flex">
-                  <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Project</button>
+                  <button type="button" class="text-white my-4 bg-primary-700 hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create Project</button>
                 </div>
                 
                        
@@ -142,12 +151,11 @@ export default function Create() {
 
               {/**Text MODAL */}
       <Modal show={openTextModal} aria-hidden="true" size="7xl" dismissible onClose={() => setOpenTextModal(false)}>
-        <Modal.Header />
+        <Modal.Header>Create Text Block ✍️</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create a text block</h3>
               <TextInput placeholder="Block Title" id="block-title-text" />
-              <Textarea  placeholder="Block Content" id="block-content-text"/>
+              <Textarea  placeholder="Block Content" id="block-content-text" className='p-2'/>
               <Button onClick={()=>{
                 setCurrentBlocks(currentBlocks=>[...currentBlocks,{type:"text",heading:document.getElementById("block-title-text").value,content:document.getElementById("block-content-text").value}])
                 setOpenTextModal(false)
@@ -159,13 +167,12 @@ export default function Create() {
 
 
       {/**Image MODAL */}
-      <Modal show={openImageModal} size="7xl" popup onClose={() => setOpenImageModal(false)}>
-        <Modal.Header />
+      <Modal show={openImageModal} size="7xl" dismissible onClose={() => setOpenImageModal(false)}>
+      <Modal.Header>Create Image Block 🌁</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create a image block</h3>
               <TextInput placeholder="Block Title" id="block-title-image" />
-              <Textarea  placeholder="Images (Comma Seperated)" id="block-content-image"/>
+              <Textarea  placeholder="Images (Comma Seperated)" id="block-content-image" className='p-2'/>
               <Button onClick={()=>{
                 setCurrentBlocks(currentBlocks=>[...currentBlocks,{type:"image",heading:document.getElementById("block-title-image").value,content:document.getElementById("block-content-image").value}])
                 setOpenImageModal(false)
@@ -176,13 +183,12 @@ export default function Create() {
       </Modal>
 
         {/**Video MODAL */}
-      <Modal show={openVideoModal} size="7xl" popup onClose={() => setOpenVideoModal(false)}>
-        <Modal.Header />
+      <Modal show={openVideoModal} size="7xl" dismissible onClose={() => setOpenVideoModal(false)}>
+      <Modal.Header>Create Video Block 📹</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create a video block</h3>
               <TextInput placeholder="Block Title" id="block-title-video" />
-              <Textarea  placeholder="Block Content" id="block-content-video"/>
+              <Textarea  placeholder="Block Content" id="block-content-video" className='p-2'/>
               <Button onClick={()=>{
                 setCurrentBlocks(currentBlocks=>[...currentBlocks,{type:"video",heading:document.getElementById("block-title-video").value,content:document.getElementById("block-content-video").value}])
                 setOpenVideoModal(false)
@@ -193,19 +199,18 @@ export default function Create() {
       </Modal>
 
        {/**Code MODAL */}
-       <Modal show={openCodeModal} size="7xl" popup onClose={() => setOpenCodeModal(false)}>
-        <Modal.Header />
+       <Modal show={openCodeModal} size="7xl" dismissible onClose={() => setOpenCodeModal(false)}>
+       <Modal.Header>Create Code Block 💻</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create a code block</h3>
-              <select id="block-title-code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select id="block-title-code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 <option selected>Choose a language</option>
                 <option value="cpp">C++</option>
                 <option value="python">Python</option>
                 <option value="java">Java</option>
                 <option value="javascript">Javascript</option>
               </select>
-              <Textarea  placeholder="Block Content" id="block-content-code"/>
+              <Textarea  placeholder="Block Content" id="block-content-code" className='p-2'/>
 
               <Button onClick={()=>{
                 setCurrentBlocks(currentBlocks=>[...currentBlocks,{type:"code",heading:document.getElementById("block-title-code").value,content:document.getElementById("block-content-code").value}])
@@ -218,6 +223,7 @@ export default function Create() {
            
 
         
+    </div>
     </div>
   )
 }
