@@ -10,6 +10,11 @@ export default function Navbar() {
         }else{
             setTheme('dark')
         }
+        if(localStorage.getItem('language')==='english'){
+            setLan('english')
+        }else{
+            setLan('bangla')
+        }
     },[])
     const changeTheme=()=>{
         console.log("change")

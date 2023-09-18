@@ -10,11 +10,13 @@ import {BsPlugin} from 'react-icons/bs'
 import {RiDashboardFill} from 'react-icons/ri'
 import { usePlugin } from '../Hooks/PluginContextProvider'
 import { pluginItems } from '../Data/Plugins'
+import { UserAuth } from '../Hooks/AuthContext'
 export default function NavigationWide() {
   const [theme, setTheme] = useState('')
   const [lan, setLan] = useState('english')
   const navigator = useNavigate()
   const installedPlugins = usePlugin()
+  const {logout}=UserAuth
   const changeTheme = () => {
     console.log("change")
     if (localStorage.getItem('color-theme') === 'light') {
@@ -49,6 +51,11 @@ export default function NavigationWide() {
       setTheme('light')
     } else {
       setTheme('dark')
+    }
+    if(localStorage.getItem('language')==='english'){
+      setLan('english')
+    }else{
+        setLan('bangla')
     }
   }, [])
 
@@ -128,7 +135,7 @@ export default function NavigationWide() {
 
         {/** BOTTOM ICONS */}
         <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
-          <button onClick={changeLanguage} type="button" class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
+          <button onClick={logout} type="button" class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
             <BiLogOut size={24} color={theme === "dark" ? "white" : "grey"} />
           </button>
           <button onClick={changeTheme} type="button" class="text-gray-500 flex items-center justify-center w-20 h-20 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg ">

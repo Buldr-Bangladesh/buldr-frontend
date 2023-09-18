@@ -14,8 +14,9 @@ export default function Marketplace() {
   }, [])
   return (
     <div className='pb-20 dark:bg-slate-900'>
-      {width > 600 && <NavigationWide />}
+      {width > 600 && <Navigation />}
       {width <= 600 && <Navigation />}
+      <Navbar/>
       {width <= 600 &&  <div className='flex z-10 md:hidden justify-center w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center"}}>
         <img width="50px" height="50px" src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' onClick={() => navigator("/")}/>
         <h2 className='text-xl font-bold text-black font-title dark:text-gray-100'><span className='text-primary-500'>BULDR.</span> Marketplace</h2>

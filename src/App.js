@@ -20,34 +20,42 @@ import PdfViewer from './Plugins/Components/Notes/PdfViewer';
 import ImageGenerator from './Plugins/Pages/ImageGenerator';
 import Paraphraser from './Plugins/Pages/Paraphraser';
 import Dashboard from './Pages/Dashboard';
+import Login from './Pages/Login';
+import ProtectedRoute from './ProtectedRoute'
+import { AuthContextProvider } from './Hooks/AuthContext';
+import CreateAccount from './Pages/CreateAccount';
 
 function App() {
 
   return (
     <BrowserRouter>
-      <ReadingRoomContextProvider>
-        <PluginContextProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/plugins" element={<Plugins />} />
-            <Route path="/social" element={<Social />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/notes" element={<Notes />} />
-            <Route path="/notes-view" element={<PdfViewer />} />
-            <Route path="/notes-create" element={<NotesCreate />} />
-            <Route path="/notes-pdf" element={<NotesCreate />} />
-            <Route path="/imagegenerator" element={<ImageGenerator />} />
-            <Route path="/paraphraser" element={<Paraphraser />} />
-            <Route path="/videocall" element={<VideoCall />} />
-            <Route path="/videocall/create" element={<VideoCallCreate />} />
-            <Route path="/videocall/join" element={<VideoCallJoin />} />
-            <Route path="/videocall/join/:id/:name/:password" element={<VideoCallRoom />} />
-          </Routes>
-        </PluginContextProvider>
-      </ReadingRoomContextProvider>
+      <AuthContextProvider>
+        <ReadingRoomContextProvider>
+          <PluginContextProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/create-account" element={<CreateAccount />} />
+              <Route path="/marketplace" element={<ProtectedRoute> <Marketplace /></ProtectedRoute>} />
+              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/plugins" element={<ProtectedRoute><Plugins /></ProtectedRoute>} />
+              <Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+              <Route path="/create" element={<ProtectedRoute><Create /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/notes" element={<ProtectedRoute><Notes /></ProtectedRoute>} />
+              <Route path="/notes-view" element={<ProtectedRoute><PdfViewer /></ProtectedRoute>} />
+              <Route path="/notes-create" element={<ProtectedRoute><NotesCreate /></ProtectedRoute>} />
+              <Route path="/notes-pdf" element={<ProtectedRoute><NotesCreate /></ProtectedRoute>} />
+              <Route path="/imagegenerator" element={<ProtectedRoute><ImageGenerator /></ProtectedRoute>} />
+              <Route path="/paraphraser" element={<ProtectedRoute><Paraphraser /></ProtectedRoute>} />
+              <Route path="/videocall" element={<ProtectedRoute><VideoCall /></ProtectedRoute>} />
+              <Route path="/videocall/create" element={<ProtectedRoute><VideoCallCreate /></ProtectedRoute>} />
+              <Route path="/videocall/join" element={<ProtectedRoute><VideoCallJoin /></ProtectedRoute>} />
+              <Route path="/videocall/join/:id/:name/:password" element={<ProtectedRoute><VideoCallRoom /></ProtectedRoute>} />
+            </Routes>
+          </PluginContextProvider>
+        </ReadingRoomContextProvider>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }

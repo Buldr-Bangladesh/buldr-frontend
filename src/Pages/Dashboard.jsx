@@ -44,7 +44,7 @@ export default function Dashboard() {
 
         <div className='grid grid-cols-1 mb-20 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {plugins.map(a => <DashboardCard data={a} />)}
-          <div class="w-full h-full max-w-sm m-2 bg-white border border-gray-200 p-3 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 pointer" onClick={()=>navigator(`/plugins`)}>
+          <div class="w-full max-w-sm m-2 bg-white border border-gray-200 p-3 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 pointer" onClick={()=>navigator(`/plugins`)}>
             <div class="w-full h-full flex flex-col items-center justify-center ">
               <MdAddCircleOutline size={64} color='gray'/>
               <h5 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">Add Plugins</h5>

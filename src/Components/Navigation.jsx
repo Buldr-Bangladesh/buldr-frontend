@@ -1,127 +1,3 @@
-// import React,{useState,useEffect} from 'react'
-// import {AiOutlineHome} from 'react-icons/ai'
-// import {TbSocial} from 'react-icons/tb'
-// import {MdCreate} from 'react-icons/md'
-// import {CgProfile} from 'react-icons/cg'
-// import {BiLogOut} from 'react-icons/bi'
-// import {BsFillPlugFill, BsPlug, BsPlugin, BsShop} from 'react-icons/bs'
-// import { useNavigate } from 'react-router-dom'
-// import { Tooltip } from 'flowbite-react'
-// export default function Navigation() {
-//   const [theme,setTheme]=useState('')
-//   const navigator=useNavigate()
-//   useEffect(()=>{
-//       if(localStorage.getItem('color-theme')==='light'){
-//           setTheme('light')
-//       }else{
-//           setTheme('dark')
-//       }
-//     },[])
-
-//   const switchPath=(pathname)=>{
-//     navigator(pathname)
-//   }
-//   return (
-//         <div className="flex flex-row w-screen z-50 h-20 md:flex-col md:w-20 md:h-screen bg-gray-100 fixed bottom-0 md:top-0 dark:bg-slate-800" style={{alignItems:"center",justifyContent:"space-between"}}>
-//             <div className="flex md:flex-col flex-row ">
-//               <div className="icon hidden md:flex w-20 h-20">
-//                 <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' />
-//                 <div className="divider"></div>
-//               </div>
-              
-      
-//               <Tooltip
-//                 content="Home"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-info md:mt-10" style={{alignItems:"center",justifyContent:"center"}} data-tip="Home" onClick={()=>switchPath
-//               ("/")}>
-//                 <div className=""><AiOutlineHome size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Home</div>
-//                 <div className="divider hidden md:flex "></div>
-//               </button>
-//               </Tooltip>
-//               <Tooltip
-//                 content="Marketplace"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-info md:mt-10" style={{alignItems:"center",justifyContent:"center"}} data-tip="Marketplace" onClick={()=>switchPath
-//               ("/marketplace")}>
-//                 <div className=""><BsShop size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Marketplace</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//               <Tooltip
-//                 content="Social"
-//                 placement="right"
-
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-info" style={{alignItems:"center",justifyContent:"center"}}  data-tip="Social" onClick={()=>switchPath
-//               ("/social")}>
-//                 <div className=""><TbSocial size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Social</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//               <Tooltip
-//                 content="Create"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-info" style={{alignItems:"center",justifyContent:"center"}} data-tip="Create Project"onClick={()=>switchPath
-//               ("/create")}>
-//                 <div className=""><MdCreate size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Create</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//               <Tooltip
-//                 content="Profile"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-info" style={{alignItems:"center",justifyContent:"center"}} data-tip="Profile" onClick={()=>switchPath
-//               ("/profile")}>
-//                 <div className=""><CgProfile size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Profile</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//             </div>
-           
-           
-//             <div className="">
-//             <Tooltip
-//                 content="Plugins"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-error" style={{alignItems:"center",justifyContent:"center"}} data-tip="Plugins" onClick={()=>switchPath("/plugins")}>
-//                 <div className="divider hidden md:flex"></div>
-//                 <div className=""><BsPlugin size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Plugins</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//               <Tooltip
-//                 content="Logout"
-//                 placement="right"
-//               >
-//               <button className="icon flex flex-col w-20 h-20 md:tooltip md:tooltip-right md:tooltip-error" style={{alignItems:"center",justifyContent:"center"}} data-tip="Log Out">
-//                 <div className="divider hidden md:flex"></div>
-//                 <div className=""><BiLogOut size={24} color={theme==="dark"?"white":"grey"}/></div>
-//                 <div className='text-xs md:hidden dark:text-white'>Plugins</div>
-//                 <div className="divider hidden md:flex"></div>
-//               </button>
-//               </Tooltip>
-//             </div>
-            
-            
-            
-          
-//         </div>
-
-//   )
-// }
-
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineHome } from 'react-icons/ai'
@@ -135,11 +11,13 @@ import {RiDashboardFill} from 'react-icons/ri'
 import { usePlugin } from '../Hooks/PluginContextProvider'
 import { pluginItems } from '../Data/Plugins'
 import { Tooltip } from 'flowbite-react'
+import {UserAuth} from '../Hooks/AuthContext'
 export default function NavigationWide() {
   const [theme, setTheme] = useState('')
   const [lan, setLan] = useState('english')
   const navigator = useNavigate()
   const installedPlugins = usePlugin()
+  const {logout}=UserAuth()
   const changeTheme = () => {
     console.log("change")
     if (localStorage.getItem('color-theme') === 'light') {
@@ -268,7 +146,7 @@ export default function NavigationWide() {
         {/** BOTTOM ICONS */}
         <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full md:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
           <Tooltip content="Logout" placement="right">
-            <button onClick={changeLanguage} type="button" class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
+            <button onClick={changeLanguage} type="button" onClick={logout} class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
               <BiLogOut size={24} color={theme === "dark" ? "white" : "grey"} />
             </button>
           </Tooltip>

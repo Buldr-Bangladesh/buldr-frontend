@@ -1,25 +1,30 @@
 import { useNavigate,useParams } from 'react-router';
-import React from 'react'
+import React,{useState} from 'react'
 import MDEditor from '@uiw/react-md-editor';
 import { Spinner } from 'flowbite-react';
 import Navbar from '../../Components/Navbar';
 import Navigation from '../../Components/Navigation';
 import {AiOutlineSave} from 'react-icons/ai'
+import { CgRemove } from 'react-icons/cg';
+import { colors } from '../../Data/Colors';
 
 
-
+//https://stackoverflow.com/questions/7925050/is-there-a-multivalued-field-type-available-in-postgresql
+//HOW TO ADD Arrays in POSTGRE
 export default function NotesCreate() {
     const navigate=useNavigate()
     const urlParams=useParams()
     
-    const [value, setValue] = React.useState("**Hello world!!!**");
-    const [title,setTitle]=React.useState(urlParams.title)
-    const [image,setImage]=React.useState(null)
-    const [subtitle,setSubtitle]=React.useState(null)
-    const [loading,setLoading]=React.useState(false)
-    const [saving,setSaving]=React.useState(false)
-    const [publish,setPublish]=React.useState(false)
-    console.log(urlParams)
+    const [value, setValue] = useState("**Hello world!!!**");
+    const [title,setTitle]=useState(urlParams.title)
+    const [image,setImage]=useState(null)
+    const [subtitle,setSubtitle]=useState(null)
+    const [loading,setLoading]=useState(false)
+    const [saving,setSaving]=useState(false)
+    const [tagVal,setTagVal]=useState()
+    const [chosenColor,setChosenColor]=useState()
+    const [tags,setTags]=useState([])
+
     let topic=urlParams.topic
     const getData=()=>{
         // db.collection(topic).doc(title).get().then(a=>{
@@ -46,8 +51,17 @@ export default function NotesCreate() {
         // .catch(e=>console.log("failed"))
         console.lod()
     }
-
+    const RemoveTag=(index)=>{
+        delete tags[index]
+        let newTags=[]
+        tags.forEach(a=>{
+            if(a) {newTags.push(a)}
+        })
+        setTags(newTags)
+    }
     React.useEffect(()=>{
+        const d=new Date()
+        console.log(d.getDate(),d.getMonth(),d.getFullYear())
         getData()
     },[])
     return (
@@ -65,6 +79,30 @@ export default function NotesCreate() {
                 <input type="text" class="block w-full mb-2 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
                 <input type="text" class="block w-full mb-2 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Subtitle' value={subtitle} onChange={(e)=>setSubtitle(e.target.value)}/>
                 <input type="text" class="block w-full mb-2  p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Image' value={image} onChange={(e)=>setImage(e.target.value)}/>
+                <div className='flex items-start justify-center'>
+                    <input type="text" class="block w-full mr-2 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Tag Name' value={image} onChange={(e)=>setTagVal(e.target.value)}/>
+                    <select onChange={e=>setChosenColor(e.target.value)} class="bg-gray-50 p-4 h-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option selected>Choose a color</option>
+                        {colors.map(a=>
+                        ( <option value={a}>
+                                <div className={`h-4 flex items-center bg-${a}-500`}>
+                                    <p className={`text-sm text-${a}-700`}>{a}</p>
+                                </div>
+                            </option>)
+                        )}
+                    </select>
+                    <button type="button" class="focus:outline-none p-4 ml-2 text-white font-semibold bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm dark:focus:ring-yellow-900" onClick={()=>{setTags(tags=>[...tags,{color:chosenColor,name:tagVal}])}}>Add</button>
+                </div>
+                <div className='flex my-2'>
+                {tags.map((a,idx)=>(
+                    <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <span className={`bg-${a.color.color}-100 text-${a.color}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-${a.color}-200 dark:text-${a.color}-800`}>
+                            {a.name}
+                            <CgRemove className='dark:text-gray ml-1 dark:hover:text-white' onClick={()=>{RemoveTag(idx)}}/>
+                        </span>
+                    </label> 
+                ))}
+                </div>
             <MDEditor
                 value={value}
                 onChange={setValue}
