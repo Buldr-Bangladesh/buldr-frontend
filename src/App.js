@@ -24,24 +24,31 @@ import Login from './Pages/Login';
 import ProtectedRoute from './ProtectedRoute'
 import { AuthContextProvider } from './Hooks/AuthContext';
 import CreateAccount from './Pages/CreateAccount';
+import Post from './Pages/Post';
+import UserContextProvider, { IDContextProvider, UserIDContext } from './Hooks/userContext';
+import Portfolio from './Pages/Portfoilo';
 
 function App() {
 
   return (
     <BrowserRouter>
+    <IDContextProvider>
       <AuthContextProvider>
         <ReadingRoomContextProvider>
           <PluginContextProvider>
+
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/create-account" element={<CreateAccount />} />
-              <Route path="/marketplace" element={<ProtectedRoute> <Marketplace /></ProtectedRoute>} />
+              <Route path="/marketplace" element={<Marketplace />} />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/plugins" element={<ProtectedRoute><Plugins /></ProtectedRoute>} />
-              <Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+              <Route path="/social" element={<Social />} />
+              <Route path="/post/:id" element={<Post />}/>
               <Route path="/create" element={<ProtectedRoute><Create /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/portfolio/:id" element={<Portfolio />} />
               <Route path="/notes" element={<ProtectedRoute><Notes /></ProtectedRoute>} />
               <Route path="/notes-view" element={<ProtectedRoute><PdfViewer /></ProtectedRoute>} />
               <Route path="/notes-create" element={<ProtectedRoute><NotesCreate /></ProtectedRoute>} />
@@ -56,6 +63,7 @@ function App() {
           </PluginContextProvider>
         </ReadingRoomContextProvider>
       </AuthContextProvider>
+      </IDContextProvider>
     </BrowserRouter>
   );
 }

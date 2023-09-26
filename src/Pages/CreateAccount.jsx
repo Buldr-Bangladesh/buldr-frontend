@@ -5,13 +5,17 @@ import { useNavigate } from 'react-router-dom'
 import { Spinner } from 'flowbite-react'
 import axios from "axios"
 import { UserAuth } from '../Hooks/AuthContext'
-import { API_ENDPOINT } from '../Data/apiData'
+import { API_ENDPOINT,BASE_URL } from '../Data/apiData'
+import { useUserIDUpdate } from '../Hooks/userContext'
 // import info from '../data/MainText'
 export default function CreateAccount() {
+    const updateBuldrID=useUserIDUpdate()
     const baseURL=API_ENDPOINT
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [name,setName]=useState("")
+    const [bio,setBio]=useState("")
+    const [image,setImage]=useState("")
     const [designation,setDesignation]=useState("")
     const [company,setCompany]=useState("")
     const [phone,setPhone]=useState("")
@@ -30,7 +34,7 @@ export default function CreateAccount() {
 
     const { createUser,user } = UserAuth()
     const createUserAccount = async()=>{
-      axios.post(`${baseURL}/user`,{
+      return await axios.post(`${BASE_URL}/user`,{
         name,
         designation,
         company,
@@ -41,18 +45,17 @@ export default function CreateAccount() {
         github,
         linkedin,
         city,
-        country
+        country,
+        bio
       })
     }
     const handleSubmit =async () => {
         try{
           setLogggingIn(true)
-          await createUser(email, password)
-          await createUserAccount()
-          //const siteUser= await axios.get(`${baseURL}/user/${email}`)
-          //console.log(siteUser.data)
-          // await userTypeChange(siteUser.data.user_type)
-          // await userIDChange(siteUser.data.user_id)
+          //await createUser(email, password)
+          const res=await createUserAccount()
+          console.log(res)
+          updateBuldrID(res.data.userID)
           navigator("/")
         }
         catch(e){
@@ -62,7 +65,6 @@ export default function CreateAccount() {
         }
         finally{
           setLogggingIn(false)
-          
         } 
     }
   return (
@@ -83,6 +85,8 @@ export default function CreateAccount() {
                       <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email Address" required="" onChange={e=>setEmail(e.target.value)}/>
                       <input type="password"  id="password" placeholder="Password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" onChange={e=>setPassword(e.target.value)}/>
                       <input type="text"  placeholder="Full Name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setName(e.target.value)}/>
+                      <input type="text"  placeholder="Bio" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setBio(e.target.value)}/>
+                      <input type="text"  placeholder="Avatar URL" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setImage(e.target.value)}/>
                       <input type="text"  placeholder="Designation" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setDesignation(e.target.value)}/>
                       <input type="text"  placeholder="Institution Name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setCompany(e.target.value)}/>
                       <input type="text"  placeholder="Phone No" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setPhone(e.target.value)}/>

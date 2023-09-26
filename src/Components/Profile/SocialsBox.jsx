@@ -4,7 +4,7 @@ import {BsGithub} from 'react-icons/bs'
 import {AiFillLinkedin} from 'react-icons/ai'
 import {BiUserCircle} from 'react-icons/bi'
 
-export default function SocialsBox() {
+export default function SocialsBox({data}) {
     const [theme,setTheme]=useState('')
     const [width,setWidth]=useState()
     useEffect(()=>{
@@ -27,7 +27,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Portfolio</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.portfolio} target='_blank'>{data.portfolio}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -36,7 +36,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Github</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.github} target='_blank'>{data.github}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -45,7 +45,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">LinkedIn</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.linkedin} target='_blank'>{data.linkedin}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -54,7 +54,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Buldr</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.buldr} target='_blank'>{data.buldr}</a>
             </span>
         </div>
 
@@ -69,7 +69,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Portfolio</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.portfolio} target='_blank'>{data.portfolio}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -78,7 +78,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Github</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.github} target='_blank'>{data.github}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -87,7 +87,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">LinkedIn</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.linkedin} target='_blank'>{data.linkedin}</a>
             </span>
         </div>
         <div class="flex flex-col md:flex-row mb-5" style={{justifyContent:"space-between"}}>
@@ -96,7 +96,7 @@ export default function SocialsBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white pl-3">Buldr</h5>
             </span>
             <span>
-                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href="https://salman-sayeed-blog.web.app" target='_blank'>https://salman-sayeed-blog.web.app</a>
+                <a class="text-md md:text-lg text-right  tracking-tight text-gray-900 dark:text-white" href={data.buldr} target='_blank'>{data.buldr}</a>
             </span>
         </div>
 

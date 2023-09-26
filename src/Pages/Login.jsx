@@ -5,9 +5,13 @@ import { useNavigate } from 'react-router-dom'
 import { Spinner } from 'flowbite-react'
 import axios from "axios"
 import { UserAuth } from '../Hooks/AuthContext'
+import { BASE_URL } from '../Data/apiData'
+import { useUserIDUpdate } from '../Hooks/userContext'
+
 // import info from '../data/MainText'
 export default function Login() {
-    const baseURL="https/"
+    const updateBuldrID=useUserIDUpdate()
+    //const {buldruser}=useUser()
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [loggingIn,setLogggingIn]=useState(false)
@@ -20,13 +24,11 @@ export default function Login() {
         try{
           setLogggingIn(true)
           await signIn(email, password)
-          //const siteUser= await axios.get(`${baseURL}/user/${email}`)
-          //console.log(siteUser.data)
-          // await userTypeChange(siteUser.data.user_type)
-          // await userIDChange(siteUser.data.user_id)
-          navigator("/")
           
-          
+          const res=await axios.get(BASE_URL+'/user-email/'+email)
+          console.log(res.data.userID)
+          updateBuldrID(res.data.userID)
+          navigator('/')
         }
         catch(e){
           console.log(e)
@@ -34,6 +36,7 @@ export default function Login() {
         }
         finally{
           setLogggingIn(false)
+          
         } 
     }
   return (

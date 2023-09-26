@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 
-export default function InfoBox() {
+export default function InfoBox({data}) {
   const [width, setWidth] = useState(600)
   useEffect(() => {
     setWidth(window.innerWidth)
@@ -16,7 +16,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Full Name</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Salman Sayeed</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.name}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -24,7 +24,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Current Designation</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Junior Software Engineer</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.designation}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -32,7 +32,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Current Company</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Graaho Technologies</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.company}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -40,7 +40,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Email</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Salmansayeed@gmail.com</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.email}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -48,7 +48,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Phone Number</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">+880 0123341123</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.phoneNo}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -56,7 +56,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Address</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Dhanmondi, Dhaka, Bangladesh</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.address}</p>
             </span>
         </div>
     </div>
@@ -68,7 +68,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Full Name</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Salman Sayeed</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.name}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -76,7 +76,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Current Designation</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Junior Software Engineer</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.designation}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -84,7 +84,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Current Company</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Graaho Technologies</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.company}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -92,7 +92,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Email</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Salmansayeed@gmail.com</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.email}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -100,7 +100,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Phone Number</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">+880 0123341123</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.phoneNo}</p>
             </span>
         </div>
         <div class="mt-5 flex flex-col md:flex-row " style={{justifyContent:"space-between"}}>
@@ -108,7 +108,7 @@ export default function InfoBox() {
                 <h5 class="text-lg text-left font-semibold tracking-tight text-gray-900 dark:text-white">Address</h5>
             </span>
             <span>
-                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">Dhanmondi, Dhaka, Bangladesh</p>
+                <p class="text-lg text-left md:text-right tracking-tight text-gray-900 dark:text-white">{data.address}</p>
             </span>
         </div>
     </div>}

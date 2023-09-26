@@ -4,11 +4,11 @@ export default function Footer() {
   return (
     
       <footer class="bg-white hidden md:flex shadow dark:bg-slate-900">
-          <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div class="w-screen p-4 md:py-8">
               <div class="sm:flex sm:items-center sm:justify-between">
                   <a href="" class="flex items-center mb-4 sm:mb-0 " >
-                  <div className="icon flex-1 hidden md:flex w-20 h-20 ">
-                    <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' style={{ padding: "10px" }} />
+                  <div className="icon flex-1  md:flex ">
+                    <img src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' className='w-16 h-16'/>
                     </div>
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Buldr Bangladesh</span>
                   </a>

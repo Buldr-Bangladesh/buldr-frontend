@@ -3,16 +3,37 @@ import Navigation from '../Components/Navigation'
 import Post from '../Components/Social/Post'
 import NavigationWide from '../Components/NavigationWide'
 import SocialFilter from '../Components/Social/SocialFilter'
+import { BASE_URL, POSTS_URL } from '../Data/apiData'
+import { Spinner } from 'flowbite-react'
+import axios from 'axios'
 
 export default function Social() {
   const [width, setWidth] = useState(600)
+  const [data,setData]=useState([])
+  const [tags,setTags]=useState()
+  const [loading,setLoading]=useState(true)
+  const getData=async()=>{
+    const res = await axios.get(BASE_URL+"/posts/social")
+   // console.log(res.data)
+    setData(res.data)
+    setLoading(false)
+  }
+  const newFetch=async(items)=>{
+    const param=[...items]
+    setLoading(true)
+    const res = await axios.get(BASE_URL+"/posts/tags?tags="+param)
+    setData(res.data)
+    setLoading(false)
+  }
+
   useEffect(() => {
+    getData()
     setWidth(window.innerWidth)
   }, [])
   return (
     <div className='pb-20 dark:bg-slate-900'>
       {width > 600 && <NavigationWide />}
-      {width > 600 && <SocialFilter />}
+      {width > 600 && <SocialFilter newFetch={newFetch}/>}
       {width <= 600 && <Navigation />}
       {width <= 600 &&  <div className='flex z-10 md:hidden justify-center w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center"}}>
         <img width="50px" height="50px" src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' onClick={() => navigator("/")}/>
@@ -32,11 +53,8 @@ export default function Social() {
             
           </div>
         </article>
-        <div className='w-full flex items-center justify-center my-5'><Post /></div>
-        <div className='w-full flex items-center justify-center my-5'><Post /></div>
-        <div className='w-full flex items-center justify-center my-5'><Post /></div>
-
-
+        {loading && <div> <Spinner/> Loading posts... </div>}
+        {!loading && data.map(a=><div className='w-full flex items-center justify-center my-5'><Post data={a}/></div>)}
 
       </div>
 

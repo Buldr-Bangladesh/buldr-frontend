@@ -16,7 +16,7 @@ export default function NavigationWide() {
   const [lan, setLan] = useState('english')
   const navigator = useNavigate()
   const installedPlugins = usePlugin()
-  const {logout}=UserAuth
+  const {logout}=UserAuth()
   const changeTheme = () => {
     console.log("change")
     if (localStorage.getItem('color-theme') === 'light') {

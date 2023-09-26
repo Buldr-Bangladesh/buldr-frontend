@@ -146,7 +146,7 @@ export default function NavigationWide() {
         {/** BOTTOM ICONS */}
         <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full md:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
           <Tooltip content="Logout" placement="right">
-            <button onClick={changeLanguage} type="button" onClick={logout} class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
+            <button type="button" onClick={logout} class="flex w-20 h-20 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm" style={{ alignItems: "center", justifyContent: "center" }}>
               <BiLogOut size={24} color={theme === "dark" ? "white" : "grey"} />
             </button>
           </Tooltip>
