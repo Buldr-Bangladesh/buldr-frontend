@@ -46,7 +46,7 @@ export default function Navbar() {
         window.location.reload()
       }
   return (
-    <div className='hidden z-10 md:flex w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center",justifyContent:"space-between"}}>
+    <div className='hidden shadow-md z-10 md:flex w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center",justifyContent:"space-between"}}>
         <h2 className='text-xl font-bold ml-24 text-black font-title dark:text-gray-100'>BULDR.</h2>
         <div className="flex flex-row mr-10">
             {/* <input type="text" placeholder="Search" className="input input-bordered w-full max-w-xs" /> */}

@@ -30,6 +30,7 @@ import UserContextProvider, { IDContextProvider, UserIDContext } from './Hooks/u
 import Portfolio from './Pages/Portfoilo';
 import NotesView from './Plugins/Pages/NotesView';
 import NotesPDF from './Plugins/Pages/NotesPDF';
+import MyOrders from './Pages/MyOrders';
 
 function App() {
 
@@ -44,7 +45,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/create-account" element={<CreateAccount />} />
-              <Route path="/marketplace" element={<Marketplace />} />
+              <Route path="/marketplace" element={<MyOrders />} />
+              <Route path="/orders" element={<MyOrders />} />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/plugins" element={<ProtectedRoute><Plugins /></ProtectedRoute>} />
               <Route path="/social" element={<Social />} />

@@ -30,11 +30,11 @@ useEffect(()=>{
     allRequests()
 },[])
   return (
-    <div className='md:pt-20 pb-20 md:pb-0 h-screen w-screen flex justify-center dark:bg-slate-900'>
-        <div className="fixed top-10 left-10 p-4 rounded-full bg-slate-700 hover:bg-slate-600" onClick={goBack}>
+    <div className='md:pt-20 pb-20 md:pb-0 h-screen w-screen flex bg-gray-50 justify-center dark:bg-slate-900'>
+        <div className="fixed top-10 left-10 p-4 rounded-full bg-gray-200 hover:bg-gray-300 shadow-md dark:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer" onClick={goBack}>
             <MdArrowBackIosNew size={24} className='dark:text-white'/>
         </div>
-        {!loading && <div className="dark:bg-slate-700 p-4 rounded-xl noscrollbar flex flex-col items-center overflow-y-scroll" style={{width:"80vw"}}>
+        {!loading && <div className="dark:bg-slate-700 p-4 shadow-md rounded-xl bg-white noscrollbar flex flex-col items-center overflow-y-scroll" style={{width:"80vw"}}>
             <img src={note.image} className='rounded-xl' style={{objectFit:"contain"}}/>
             <h2 className='mt-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white'>{note.title} </h2>
             <h2 className='mb-4 p-2 text-center text-lg  leading-none tracking-tight text-gray-900 md:text-lg lg:text-lg dark:text-white'>{note.subtitle} </h2>

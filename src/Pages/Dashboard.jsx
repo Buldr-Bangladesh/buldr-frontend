@@ -16,7 +16,7 @@ export default function Dashboard() {
       <Navigation />
       <Navbar />
 
-      <div class="w-full min-h-screen flex flex-col items-center justify-center bg-white bg-pink-200 dark:bg-gray-900">
+      <div class="w-full min-h-screen flex flex-col items-center justify-center bg-white bg-pink-200 md:px-24 dark:bg-gray-900">
 
         {/**Navigation */}
         {/* <div className="w-full md:w-1/2 my-10 md:mt-20" >

@@ -44,16 +44,16 @@ export default function NotesPDF() {
 
     return (
         <div className='md:pt-20 pb-20 md:pb-0 min-h-screen w-screen flex flex-col justify-center dark:bg-slate-900'>
-            <div className="fixed top-10 left-10 p-4 rounded-full bg-slate-700 hover:bg-slate-600" onClick={()=>window.history.back()}>
+            <div className="fixed top-10 left-10 p-4 rounded-full bg-gray-200 hover:bg-gray-300 shadow-md dark:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer" onClick={()=>window.history.back()}>
                 <MdArrowBackIosNew size={24} className='dark:text-white' />
             </div>
             <div className="fixed top-10 w-full flex items-center justify-center" onClick={()=>window.history.back()}>
                 <h2 className='text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl text-primary-500'>PDF Reading Room </h2>
             </div>
-            <div className="fixed top-10 right-10 p-4 rounded-full bg-slate-700 hover:bg-slate-600" onClick={()=>setOpenNewModal(true)}>
+            <div className="fixed top-10 right-10 p-4 rounded-full bg-gray-200 hover:bg-gray-300 shadow-md dark:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer" onClick={()=>setOpenNewModal(true)}>
                 <CgAddR size={24} className='dark:text-white' />
             </div>
-            <div className="fixed bottom-10 right-10 p-4 rounded-full bg-slate-700 hover:bg-slate-600" onClick={()=>setViewMode(true)}>
+            <div className="fixed bottom-10 right-10 p-4 rounded-full bg-primary-500 hover:bg-primary-600 cursor-pointer shadow-md " onClick={()=>setViewMode(true)}>
                 <TbViewfinder size={24} className='dark:text-white' />
             </div>
     

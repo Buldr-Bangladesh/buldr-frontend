@@ -153,15 +153,16 @@ export default function Portfolio() {
             {!loading && <div className=" w-full flex flex-col items-center justify-around " id="projects">
               <h2 className='mt-4 text-xl font-extrabold text-primary-500 leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl'>My Projects </h2>
               <h2 className='mb-4 p-2 text-center text-lg  leading-none tracking-tight text-gray-900 md:text-lg lg:text-lg dark:text-white'>View my projects that I have created over the years </h2>
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 my-24  items-center justify-around w-full">
+              <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-3 my-24  items-center justify-around w-full">
                   {posts.map(a=><Post data={a}/>)}
               </div>
               
             </div>}
             {/**NOTES */}
-            <div className='mt-24 mb-4 flex flex-col items-center' id="blogs">
-                <h2 className='text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl text-primary-500'>My Notes </h2>
-                <h2 className='mb-4 text-lg text-center font-normal leading-none tracking-tight text-gray-900 md:text-lg lg:text-lg dark:text-white'>A list of all my notes that I made </h2>
+            <div className=" bg-gray-100 dark:bg-slate-800">
+            <div className='mt-24 mb-4 flex flex-col items-center ' id="blogs">
+                <h2 className='text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl text-primary-500'>My Blogs </h2>
+                <h2 className='mb-4 text-lg text-center font-normal leading-none tracking-tight text-gray-900 md:text-lg lg:text-lg dark:text-white'>Read my blogs on various topics</h2>
             </div>
             <div className="w-full flex items-center justify-center">
             <div class="inline-flex rounded-md shadow-sm" role="group">
@@ -175,7 +176,7 @@ export default function Portfolio() {
                 </div>
 
             </div>
-            {!loading && gridView && <div className='grid md:grid-cols-2 md:p-20 gap-4 lg:grid-cols-3 grid-cols-1'>
+            {!loading && gridView && <div className='grid md:grid-cols-4 md:p-20 gap-4 lg:grid-cols-5 grid-cols-1'>
                 {notes.map(a=>(
                      <article class="p-6 bg-white max-w-xl mx-5 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                      <img class="w-full mb-2 rounded-lg " src={a.image} alt="projectImage" />
@@ -220,7 +221,7 @@ export default function Portfolio() {
                    </article>
                 ))}
             </div>}
-
+            </div>
             {/**FOOTER */}
             <div className="w-full flex flex-col items-center justify-around dark:bg-slate-800" id="footer">
               <div className="divider"></div>
