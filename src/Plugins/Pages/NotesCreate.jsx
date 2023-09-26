@@ -1,20 +1,23 @@
 import { useNavigate,useParams } from 'react-router';
 import React,{useState} from 'react'
 import MDEditor from '@uiw/react-md-editor';
-import { Spinner } from 'flowbite-react';
+import { Spinner, ToggleSwitch } from 'flowbite-react';
 import Navbar from '../../Components/Navbar';
 import Navigation from '../../Components/Navigation';
 import {AiOutlineSave} from 'react-icons/ai'
 import { CgRemove } from 'react-icons/cg';
 import { colors } from '../../Data/Colors';
-
+import { useUserID } from '../../Hooks/userContext';
+import axios from 'axios'
+import { BASE_URL } from '../../Data/apiData';
 
 //https://stackoverflow.com/questions/7925050/is-there-a-multivalued-field-type-available-in-postgresql
 //HOW TO ADD Arrays in POSTGRE
 export default function NotesCreate() {
     const navigate=useNavigate()
     const urlParams=useParams()
-    
+    const buldrUser=useUserID()
+    const [prvt,setPrvt]=useState(false)
     const [value, setValue] = useState("**Hello world!!!**");
     const [title,setTitle]=useState(urlParams.title)
     const [image,setImage]=useState(null)
@@ -22,7 +25,7 @@ export default function NotesCreate() {
     const [loading,setLoading]=useState(false)
     const [saving,setSaving]=useState(false)
     const [tagVal,setTagVal]=useState()
-    const [chosenColor,setChosenColor]=useState()
+    const [chosenColor,setChosenColor]=useState("indigo")
     const [tags,setTags]=useState([])
 
     let topic=urlParams.topic
@@ -36,20 +39,18 @@ export default function NotesCreate() {
         //     setLoading(false)
         // })
     }
-    const saveData=()=>{
-        // db.collection(topic).doc(title).set({
-        //     title:title,
-        //     subtitle:subtitle,
-        //     topic:topic,
-        //     image:image,
-        //     blog:value,
-        //     public:publish
-        // }).then(e=>{
-        //     alert("success")
-        //     setSaving(false)
-        // })
-        // .catch(e=>console.log("failed"))
-        console.lod()
+    const uploadNote=async()=>{
+        const res = await axios.post(BASE_URL+'/note',{
+            "userID": buldrUser,
+            title,
+            subtitle,
+            image,
+            "content": value,
+            "prvt": true,
+            "tags": tags
+          })
+        console.log(res.data)
+        setSaving(false)
     }
     const RemoveTag=(index)=>{
         delete tags[index]
@@ -80,8 +81,8 @@ export default function NotesCreate() {
                 <input type="text" class="block w-full mb-2 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Subtitle' value={subtitle} onChange={(e)=>setSubtitle(e.target.value)}/>
                 <input type="text" class="block w-full mb-2  p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Image' value={image} onChange={(e)=>setImage(e.target.value)}/>
                 <div className='flex items-start justify-center'>
-                    <input type="text" class="block w-full mr-2 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Tag Name' value={image} onChange={(e)=>setTagVal(e.target.value)}/>
-                    <select onChange={e=>setChosenColor(e.target.value)} class="bg-gray-50 p-4 h-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <input type="text" class="block w-full mr-2 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Tag Name' value={tagVal} onChange={(e)=>setTagVal(e.target.value)}/>
+                    {/* <select onChange={e=>setChosenColor(e.target.value)} class="bg-gray-50 p-4 h-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected>Choose a color</option>
                         {colors.map(a=>
                         ( <option value={a}>
@@ -90,7 +91,7 @@ export default function NotesCreate() {
                                 </div>
                             </option>)
                         )}
-                    </select>
+                    </select> */}
                     <button type="button" class="focus:outline-none p-4 ml-2 text-white font-semibold bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm dark:focus:ring-yellow-900" onClick={()=>{setTags(tags=>[...tags,{color:chosenColor,name:tagVal}])}}>Add</button>
                 </div>
                 <div className='flex my-2'>
@@ -103,6 +104,7 @@ export default function NotesCreate() {
                     </label> 
                 ))}
                 </div>
+                <ToggleSwitch className='md:mx-4 md:my-4 my-2' label="Public" checked={prvt} onChange={() => setPrvt(!prvt)} />
             <MDEditor
                 value={value}
                 onChange={setValue}
@@ -112,7 +114,7 @@ export default function NotesCreate() {
                 setSaving(true)
                 console.log(title)
                 console.log(subtitle)
-                saveData()
+                uploadNote()
             }}>Save</button>
             </div>}
             {loading && <div elevation={5} style={{zIndex:"5",width:"80vw",minHeight:"50vh",margin:"5vh 0",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"50px"}}>

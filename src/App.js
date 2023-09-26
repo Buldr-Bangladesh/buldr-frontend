@@ -10,6 +10,7 @@ import Profile from './Pages/Profile';
 import Plugins from './Pages/Plugins';
 import PluginContextProvider from './Hooks/PluginContextProvider';
 import Notes from './Plugins/Pages/Notes';
+import NoteViewer from './Plugins/Pages/NoteViewer';
 import VideoCall from './Plugins/Pages/VideoCall';
 import VideoCallCreate from './Plugins/Pages/VideoCallCreate';
 import VideoCallJoin from './Plugins/Pages/VideocallJoin';
@@ -27,6 +28,8 @@ import CreateAccount from './Pages/CreateAccount';
 import Post from './Pages/Post';
 import UserContextProvider, { IDContextProvider, UserIDContext } from './Hooks/userContext';
 import Portfolio from './Pages/Portfoilo';
+import NotesView from './Plugins/Pages/NotesView';
+import NotesPDF from './Plugins/Pages/NotesPDF';
 
 function App() {
 
@@ -50,9 +53,10 @@ function App() {
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/portfolio/:id" element={<Portfolio />} />
               <Route path="/notes" element={<ProtectedRoute><Notes /></ProtectedRoute>} />
-              <Route path="/notes-view" element={<ProtectedRoute><PdfViewer /></ProtectedRoute>} />
+              <Route path="/mynotes" element={<ProtectedRoute><NotesView /></ProtectedRoute>} />
+              <Route path="/note-viewer/:id" element={<ProtectedRoute><NoteViewer /></ProtectedRoute>} />
               <Route path="/notes-create" element={<ProtectedRoute><NotesCreate /></ProtectedRoute>} />
-              <Route path="/notes-pdf" element={<ProtectedRoute><NotesCreate /></ProtectedRoute>} />
+              <Route path="/notes-pdf" element={<ProtectedRoute><NotesPDF /></ProtectedRoute>} />
               <Route path="/imagegenerator" element={<ProtectedRoute><ImageGenerator /></ProtectedRoute>} />
               <Route path="/paraphraser" element={<ProtectedRoute><Paraphraser /></ProtectedRoute>} />
               <Route path="/videocall" element={<ProtectedRoute><VideoCall /></ProtectedRoute>} />

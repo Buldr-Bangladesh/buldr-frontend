@@ -20,7 +20,7 @@ export function RemoveReadingRoomItem(){
 }
 
 export default function ReadingRoomContextProvider({children}){
-    const [readingRoom,setReadingRoom]=useLocalStorage("reading-room",[])
+    const [readingRoom,setReadingRoom]=useLocalStorage("reading-room-buldr",[])
 
     const addToReadingRoom=(data)=>{
         setReadingRoom(prev=>[...prev,data])
