@@ -8,7 +8,7 @@ import Block from '../Components/Create/Block'
 import { Modal, Label, TextInput, Checkbox, Button, Textarea, ToggleSwitch, Spinner } from 'flowbite-react'
 import { current } from 'tailwindcss/colors'
 import { ModalFooter } from 'flowbite-react/lib/esm/components/Modal/ModalFooter'
-import { TAGS_URL, BASE_URL } from '../Data/apiData'
+import { TAGS_URL, BASE_URL,PARAPHRASER_API } from '../Data/apiData'
 
 export default function Create() {
   const [type, setType] = useState("text")
@@ -37,6 +37,9 @@ export default function Create() {
   const [tags, setTags] = useState([])
   const [loadingTags,setLoadingTags]=useState(true)
 
+  const [loading,setLoading]=useState(false)
+  const [generatedTexts,setGeneratedTexts]=useState([])
+  const [generated,setGenerated]=useState([])
   const removeBlock = (idx) => {
     currentBlocks.splice(idx, 1)
     setCurrentBlocks([...currentBlocks])
@@ -81,6 +84,7 @@ export default function Create() {
       "social": addPostToSocial,
       "tags": tgs
     })
+    
 
     const pid=await res.data.postID
     currentBlocks.forEach(async(a,idx)=>{
@@ -117,6 +121,16 @@ export default function Create() {
       })
     )
   }
+  const paraphraseText = async (value) => {
+    setLoading(true)
+    setGenerated(false)
+    console.log(value)
+    const res=await axios.get(`${PARAPHRASER_API}/prompt?prompt=${value}`)
+    setGeneratedTexts(res.data.answer)
+    console.log(res.data)
+    setLoading(false)
+    setGenerated(true)
+}
   useEffect(() => {
     allRequests()
     setWidth(window.innerWidth)
@@ -271,11 +285,23 @@ export default function Create() {
             <div className="space-y-6">
               <TextInput placeholder="Block Title" id="block-title-text" />
               <Textarea placeholder="Block Content" id="block-content-text" className='p-2' />
+              {!loading && generated && <div className="">
+                  {generatedTexts.map(a=>(
+                    <div className='p-4 shadow-sm rounded-lg bg-gray-200 dark:bg-slate-800 mb-2'><p className='dark:text-white'>{a}</p></div>
+                  ))}
+              </div>}
+              {loading && !generated && <div className="dark:text-white">
+                  <Spinner/> Loading Texts
+              </div>}
+              <div className="flex">
+              <Button className='mr-2' onClick={() => {paraphraseText(document.getElementById("block-content-text").value)}}>Paraphrase</Button>
               <Button onClick={() => {
                 setCurrentBlocks(currentBlocks => [...currentBlocks, { type: "text", heading: document.getElementById("block-title-text").value, content: document.getElementById("block-content-text").value }])
                 setOpenTextModal(false)
               }}>Save Block
               </Button>
+              
+              </div>
             </div>
           </Modal.Body>
         </Modal>

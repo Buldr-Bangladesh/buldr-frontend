@@ -25,18 +25,6 @@ export default function Paraphraser() {
     
 
     const generateText = async () => {
-        // db.collection(topic).doc(title).set({
-        //     title:title,
-        //     subtitle:subtitle,
-        //     topic:topic,
-        //     image:image,
-        //     blog:value,
-        //     public:publish
-        // }).then(e=>{
-        //     alert("success")
-        //     setSaving(false)
-        // })
-        // .catch(e=>console.log("failed"))
         setLoading(true)
         console.log(value)
         const res=await axios.get(`${PARAPHRASER_API}/prompt?prompt=${value}`)
@@ -45,20 +33,6 @@ export default function Paraphraser() {
         console.log(res.data)
         setLoading(false)
         setGenerated(true)
-        // axios.get(PARAPHRASER_API,{
-        //     "name":"user",
-        //     "prompt":value,
-            
-        // }).then(res=>{
-        //     console.log(res.data)
-        //     setData(res.data)
-        //     setLoading(false)
-        //     setGenerated(true)
-        // }).then(()=>{
-            
-            
-        // }).catch(e=>console.log(e))
-        // console.log(data)
     }
 
     useEffect(() => {
