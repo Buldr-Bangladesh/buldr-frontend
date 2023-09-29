@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../../Data/apiData'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useUserID } from '../../Hooks/userContext'
+import { MdOutlineDelete } from 'react-icons/md'
 export default function Post({data}) {
   const navigator=useNavigate()
+  const userID=useUserID()
   //console.log(data)
   const [user,setUser]=useState()
   const [loading,setLoading]=useState(true)
@@ -13,6 +16,10 @@ export default function Post({data}) {
     await setUser(res.data)
     setLoading(false)
     console.log(user)
+  }
+  const deletePost=async()=>{
+    const res=await axios.delete(BASE_URL+"/post/"+data.postID)
+    window.location.reload()
   }
   useEffect(()=>{
     console.log(data)
@@ -33,7 +40,7 @@ export default function Post({data}) {
         </span>}
         <span class="text-sm">{transformDate(data.date)}</span>
       </div>
-
+      {data.userID==userID && <button onClick={()=>deletePost()} type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2 mr-2 mt-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" ><MdOutlineDelete size={24}/></button>}
       <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">{data.title}</a></h2>
       <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{data.subtitle}</p>
       <div class="flex flex-col justify-center items-start">

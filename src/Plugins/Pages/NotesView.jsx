@@ -11,6 +11,7 @@ import { useUserID } from '../../Hooks/userContext';
 import axios from 'axios'
 import { BASE_URL } from '../../Data/apiData';
 import { BsGrid3X2Gap } from 'react-icons/bs';
+import { MdOutlineDelete } from 'react-icons/md'
 import { PiListFill } from 'react-icons/pi';
 
 //https://stackoverflow.com/questions/7925050/is-there-a-multivalued-field-type-available-in-postgresql
@@ -32,7 +33,10 @@ export default function NotesView() {
         console.log(res.data)
         setLoading(false)
     }
-
+    const deleteNote=async(id)=>{
+        const res=await axios.delete(BASE_URL+"/note/"+id)
+        window.location.reload()
+      }
 
     React.useEffect(()=>{
         getData()
@@ -70,7 +74,7 @@ export default function NotesView() {
                          {a.tags[0]}
                        </span>}
                      </div>
-               
+                     {a.userID==buldrUser && <button onClick={()=>deleteNote(a.noteID)} type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2 mr-2 mt-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" ><MdOutlineDelete size={24}/></button>}
                      <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">{a.title}</a></h2>
                      <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{a.subtitle}</p>
                      <div class="flex flex-col justify-center items-start">
@@ -85,7 +89,7 @@ export default function NotesView() {
                 {data.map(a=>(
                      <article class="p-2 flex items-center justify-between bg-white w-full rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div className="flex">
-                        <img class="w-24 mr-2 rounded-lg " src="{a.image}" alt="projectImage" style={{objectFit:"contain"}}/>
+                        <img class="w-24 mr-2 rounded-lg " src={a.image} alt="projectImage" style={{objectFit:"contain"}}/>
                         <div className='max-w-4xl'>
                             
                             <div class="flex justify-between items-center mb-5 text-gray-500">
@@ -101,6 +105,7 @@ export default function NotesView() {
                      
                      <div class="flex flex-col justify-center items-start">
                         <button type="button" class="focus:outline-none text-white font-semibold bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={()=>navigator('/note-viewer/'+a.noteID)}>View</button>
+                        {a.userID==buldrUser && <button onClick={()=>deleteNote(a.noteID)} type="button" class="focus:outline-none text-white font-semibold bg-red-500 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-red-900" >Delete</button>}
                      </div>
                    </article>
                 ))}
