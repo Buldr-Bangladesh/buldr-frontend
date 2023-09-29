@@ -34,6 +34,8 @@ import MyOrders from './Pages/MyOrders';
 import ChatCE from './Plugins/Pages/ChatCE';
 import ChatCSE from './Plugins/Pages/ChatCSE';
 import ChatEEE from './Plugins/Pages/ChatEEE';
+import MapPage from './Plugins/Pages/MapPage';
+import Drone from './Plugins/Pages/Drone';
 
 function App() {
 
@@ -71,6 +73,8 @@ function App() {
               <Route path="/videocall/create" element={<ProtectedRoute><VideoCallCreate /></ProtectedRoute>} />
               <Route path="/videocall/join" element={<ProtectedRoute><VideoCallJoin /></ProtectedRoute>} />
               <Route path="/videocall/join/:id/:name/:password" element={<ProtectedRoute><VideoCallRoom /></ProtectedRoute>} />
+              <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
+              <Route path="/drone" element={<ProtectedRoute><Drone /></ProtectedRoute>} />
             </Routes>
           </PluginContextProvider>
         </ReadingRoomContextProvider>
