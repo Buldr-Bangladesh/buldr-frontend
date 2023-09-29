@@ -6,8 +6,10 @@ import Navbar from '../Components/Navbar'
 import iotAnimation from '../assets/iot.json'
 import engineersAnimation from '../assets/engineers.json'
 import ReactTypingEffect from 'react-typing-effect'
+import { useNavigate } from 'react-router-dom'
 export default function Home() {
     const [lan, setLan] = useState('bangla')
+    const navigator=useNavigate()
     useEffect(() => {
         if (localStorage.getItem('language') === 'english') {
             setLan('english')
@@ -25,10 +27,10 @@ export default function Home() {
                 <Lottie animationData={engineersAnimation} />
                 <div class="mt-4 md:mt-0">
                     {lan === 'english' && <h2 class="mb-4 text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"> A platform for <span class="text-amber-600 dark:text-amber-500">Engineering Students </span> and <span class="text-amber-600 dark:text-amber-500">professionals</span> around the country </h2>}
-                    {lan === 'bangla' && <h2 class="mb-4 text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">১৩০০০ এর ও বেশি <span class="text-amber-600 dark:text-amber-500"> বাংলাদেশি তৃতীয় লিঙ্গের মানুষের জন্য </span> একটি সমাজকল্যান সংগঠন </h2>}
+                    {lan === 'bangla' && <h2 class="mb-4 text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">লক্ষাধিক  <span class="text-amber-600 dark:text-amber-500"> বাংলাদেশি ইঞ্জিনিয়রদের জন্য </span> একটি প্লাটফর্ম  </h2>}
                     {lan == "english" && <p class="mb-6 text-center md:text-left  font-light text-gray-500 md:text-lg dark:text-gray-400">Buldr is a platform for  Bangladeshi engineering students and professionals around the country. We work with engineers to make them work-ready through training, showcasing, monetizing and provide them placements in companies nationwide</p>}
                     {lan == "bangla" && <p class="mb-6 text-center md:text-left  font-light text-gray-500 md:text-lg dark:text-gray-400">বিল্ডার হল সারা দেশে ইঞ্জিনিয়ারিং ছাত্র ও প্রফেশনালদের একটি প্ল্যাটফর্ম। আমরা ইঞ্জিনিয়ারদের নিয়ে কাজ করি যাতে তারা প্রশিক্ষণের এবং প্রজেক্ট শোকেসএর মাধ্যমে কাজ করার জন্য প্রস্তুত করা হয় এবং তাদের দেশব্যাপী কোম্পানিতে নিয়োগ নিশিত করা হয়  </p>}
-                    {lan == "english" && <a href="#" class="inline-flex text-center items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                    {lan == "english" && <a href="#" class="inline-flex text-center items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900" onClick={()=>navigator("/create")}>
                         Get started
                         <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </a>}
