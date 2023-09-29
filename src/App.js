@@ -31,6 +31,9 @@ import Portfolio from './Pages/Portfoilo';
 import NotesView from './Plugins/Pages/NotesView';
 import NotesPDF from './Plugins/Pages/NotesPDF';
 import MyOrders from './Pages/MyOrders';
+import ChatCE from './Plugins/Pages/ChatCE';
+import ChatCSE from './Plugins/Pages/ChatCSE';
+import ChatEEE from './Plugins/Pages/ChatEEE';
 
 function App() {
 
@@ -61,6 +64,9 @@ function App() {
               <Route path="/notes-pdf" element={<ProtectedRoute><NotesPDF /></ProtectedRoute>} />
               <Route path="/imagegenerator" element={<ProtectedRoute><ImageGenerator /></ProtectedRoute>} />
               <Route path="/paraphraser" element={<ProtectedRoute><Paraphraser /></ProtectedRoute>} />
+              <Route path="/chatce" element={<ProtectedRoute><ChatCE /></ProtectedRoute>} />
+              <Route path="/chatcse" element={<ProtectedRoute><ChatCSE /></ProtectedRoute>} />
+              <Route path="/chateee" element={<ProtectedRoute><ChatEEE /></ProtectedRoute>} />
               <Route path="/videocall" element={<ProtectedRoute><VideoCall /></ProtectedRoute>} />
               <Route path="/videocall/create" element={<ProtectedRoute><VideoCallCreate /></ProtectedRoute>} />
               <Route path="/videocall/join" element={<ProtectedRoute><VideoCallJoin /></ProtectedRoute>} />

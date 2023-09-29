@@ -25,7 +25,7 @@ export default function PluginMarket() {
         </div>
 
         <div className='grid grid-cols-1 mb-20 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-          {pluginsData.map(a => <PluginCard id={a.id} name={a.name} title={a.title} image={a.image} />)}
+          {pluginsData.map(a => <PluginCard id={a.id} name={a.name} title={a.title} image={a.image}/>)}
 
         </div>
 

@@ -21,8 +21,10 @@ export default function PluginCard({ id, name, title, image }) {
     <div class="w-full max-w-sm m-2 bg-white border border-gray-200 p-3 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div class="flex flex-col items-center pb-10">
         <img class="w-64 h-64 mb-3" src={image} alt="image" />
+        
         <h5 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">{name}</h5>
         <span class="text-sm text-gray-500 text-center dark:text-gray-400">{title}</span>
+        
         <div class="flex mt-4 space-x-3 md:mt-6">
           {!installed && <div  class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             onClick={() => {

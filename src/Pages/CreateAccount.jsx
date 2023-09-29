@@ -56,7 +56,7 @@ export default function CreateAccount() {
           const res=await createUserAccount()
           console.log(res)
           updateBuldrID(res.data.userID)
-          navigator("/")
+          navigator("/dashboard")
         }
         catch(e){
           console.log(e)

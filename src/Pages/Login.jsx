@@ -28,7 +28,7 @@ export default function Login() {
           const res=await axios.get(BASE_URL+'/user-email/'+email)
           console.log(res.data.userID)
           updateBuldrID(res.data.userID)
-          navigator('/')
+          navigator('/dashboard')
         }
         catch(e){
           console.log(e)
