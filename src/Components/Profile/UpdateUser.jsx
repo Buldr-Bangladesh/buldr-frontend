@@ -43,6 +43,8 @@ export default function UpdateUser({ data }) {
         })
         console.log(res.data)
         setLogggingIn(false)
+        alert("User Updated")
+        window.location.reload()
         
     }
 
