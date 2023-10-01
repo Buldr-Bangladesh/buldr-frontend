@@ -13,7 +13,7 @@ This frontend has been deployed on firebase hosting and can't be used in produca
 ## Usage 
 Clone this repo on your local machine and run the following commands
 ```bash
-    npm intall
+    npm install
 ```
 After that you can run with
 ```bash
