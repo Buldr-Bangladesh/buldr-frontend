@@ -30,7 +30,7 @@ export default function AvatarBox({data}) {
         portfolio,
         github,
         linkedin,
-        "buldr": "https://buldr-bangladesh.web.app/portfolio"+data.userID,
+        "buldr": "https://buldr-bangladesh.web.app/portfolio/"+data.userID,
         city,
         country,
         image,

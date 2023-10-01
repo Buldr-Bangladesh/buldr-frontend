@@ -36,6 +36,7 @@ import ChatCSE from './Plugins/Pages/ChatCSE';
 import ChatEEE from './Plugins/Pages/ChatEEE';
 import MapPage from './Plugins/Pages/MapPage';
 import Drone from './Plugins/Pages/Drone';
+import Summarizer from './Plugins/Pages/Summarizer';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
               <Route path="/notes-pdf" element={<ProtectedRoute><NotesPDF /></ProtectedRoute>} />
               <Route path="/imagegenerator" element={<ProtectedRoute><ImageGenerator /></ProtectedRoute>} />
               <Route path="/paraphraser" element={<ProtectedRoute><Paraphraser /></ProtectedRoute>} />
+              <Route path="/summarizer" element={<ProtectedRoute><Summarizer /></ProtectedRoute>} />
               <Route path="/chatce" element={<ProtectedRoute><ChatCE /></ProtectedRoute>} />
               <Route path="/chatcse" element={<ProtectedRoute><ChatCSE /></ProtectedRoute>} />
               <Route path="/chateee" element={<ProtectedRoute><ChatEEE /></ProtectedRoute>} />

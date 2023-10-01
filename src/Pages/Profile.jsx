@@ -33,7 +33,7 @@ export default function Profile() {
   return (
     <div className='md:pt-20 pb-20 md:pb-0'>
         {width <= 600 &&  <div className='flex z-10 md:hidden justify-center w-screen h-20 bg-gray-100 dark:bg-slate-800 fixed top-0' style={{alignItems:"center"}}>
-          <img width="50px" height="50px" src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' onClick={() => navigator("/")}/>
+          <img width="50px" height="50px" src={user.image} onClick={() => navigator("/")}/>
           <h2 className='text-xl font-bold text-black font-title dark:text-gray-100'><span className='text-primary-500'>BULDR.</span> Profile</h2>
         </div>}
         <Navigation/>

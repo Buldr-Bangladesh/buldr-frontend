@@ -37,7 +37,7 @@ export default function Dashboard() {
           <img width="50px" height="50px" src='https://i.postimg.cc/hGqFHfxB/Beige-Simple-One-Line-Butterfly-Events-Logo-removebg-preview.png' onClick={() => navigator("/")}/>
           <h2 className='text-xl font-bold text-black font-title dark:text-gray-100'><span className='text-primary-500'>BULDR.</span> Dashboard</h2>
         </div>}
-        <div className="w-full md:w-1/2 my-10 mt-20 md:mt-0" >
+        <div className="w-full md:w-1/2 my-10 mt-20 md:mt-20" >
           <h2 className='mt-4 text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white'>My <span className="text-primary-600 dark:text-primary-500">Plugins</span> </h2>
           <h2 className='mt-4 text-md font-medium text-center leading-none tracking-tight text-gray-600 dark:text-gray-600'>Plugins that are currently on my Dashboard </h2>
         </div>

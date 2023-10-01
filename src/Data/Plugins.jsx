@@ -25,6 +25,12 @@ export const pluginsData=[
         image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
     },
     {
+        id:"summarizer",
+        name:"Text Summarization Plugin [AI]",
+        title:"A plugin that re-writes whatever you give to it using a GPT model", 
+        image:"https://i.postimg.cc/pX49YChG/3d-clipboard-with-todo-checklist-paper-green-tick.jpg",
+    },
+    {
         id:"imagegenerator",
         name:"Image Generator Plugin [AI]",
         title:"A plugin that creates images based on your prompt with stable diffusion", 
@@ -95,6 +101,13 @@ export const pluginItems={
         title:"A plugin that re-writes whatever you give to it using a GPT model", 
         image:"https://i.postimg.cc/j5x3Fn3k/9650847-7883.jpg",
         path:"/paraphraser"
+    },
+    "summarizer" : {
+        id:"summarizer",
+        name:"Text Summarization Plugin [AI]",
+        title:"A plugin that re-writes whatever you give to it using a GPT model", 
+        image:"https://i.postimg.cc/pX49YChG/3d-clipboard-with-todo-checklist-paper-green-tick.jpg",
+        path:"/summarizer"
     },
     "imagegenerator" : {
         id:"imagegenerator",

@@ -9,8 +9,10 @@ import { Modal, Label, TextInput, Checkbox, Button, Textarea, ToggleSwitch, Spin
 import { current } from 'tailwindcss/colors'
 import { ModalFooter } from 'flowbite-react/lib/esm/components/Modal/ModalFooter'
 import { TAGS_URL, BASE_URL,PARAPHRASER_API } from '../Data/apiData'
+import { useUserID } from '../Hooks/userContext'
 
 export default function Create() {
+  const buldrID=useUserID()
   const [type, setType] = useState("text")
   const [width, setWidth] = useState()
   const [titleDone, setTitleDone] = useState(false)
@@ -75,7 +77,7 @@ export default function Create() {
     tags.forEach(a=>tgs.push(a.name))
     console.log(tgs)
     const res = await axios.post(BASE_URL+'/post',{
-      "userID": 5,
+      "userID": buldrID,
       "date": Date.now(),
       "title": title,
       "subtitle": subtitle,
